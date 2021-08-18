@@ -1,0 +1,300 @@
+//green
+$Green: #00c6ae;
+$Green-100: #d6fcf7;
+$Green-800: #61e4c5;
+//pink
+$Pink: #ff89bb;
+$Pink-00: #fff3f8;
+$Pink-00: #ffc7de;
+//red
+$Red: #f95a2c;
+$Red-100: #ffe8e8;
+$Red-800: #ff9692;
+//blue
+$Blue: #1947e5;
+$Blue-100: #e9e7fc;
+$blue-800: #8094ff;
+//yellow
+$yellow: #ffbd12;
+$yellow-800: #ffd465;
+$yellow-100: #fff4cc;
+//black
+$Black: #18191f;
+$Black-100: #f4f5f7;
+$Black-200: #eeeff4;
+$Black-300: #9fa4b4;
+$Black-700: #969bab;
+$Black-800: #474a57;
+$White:#FFFFFF;
+
+$rounded-corner: 16px;
+$border: 2px solid $Black;
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+@mixin border {
+  border-radius: $rounded-corner;
+  border: $border;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap');
+
+.screen-title{
+font-family: Montserrat;
+font-style: normal;
+font-weight: 800;
+font-size: 44px;
+line-height: 54px;
+}
+.white{
+    color: #FFFFFF;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  }
+
+section{
+    margin: 25px;
+}
+container{
+  display:flex;
+  flex-wrap:wrap;
+}
+//typography
+h1{
+  font-weight:800;
+}
+h2{
+  font-weight:700;
+}
+body {
+  font-family:"Montserrat";
+  font-weight:500;
+  font-height:32px;
+}
+//buttons
+@mixin button-large ($background,$font-color){
+  margin:5px;
+  background: $background;
+  color: $font-color;
+  @include border;
+  display: flex;
+align-items: center;
+padding: 16px;
+   font-weight:800;
+  font-size:21px;
+  @if $background == $Blue {
+    border: none;
+  }
+  //space between icon and label
+  .fill-icon{
+    margin-right: 6px;
+  
+      @if $background == $White{
+        fill: $Black;
+      }
+      @if $background != $White{
+        fill:$White;
+        stroke: $White;
+      }
+  }
+}
+
+//these buttons have parameters of (background, font-color)
+.button-large-outline{
+  @include button-large($White, $Black);
+}
+.button-large-blue{
+  @include button-large($Blue, $White);
+}
+.button-large-black{
+  @include button-large($Black, $White);
+}
+.small{
+  font-size: 12px;
+  padding: 10px 16px;
+}
+
+
+//removes fill from icon
+.chevron, .circle{
+  .fill-icon{
+    margin:0;
+    fill:none;
+  }
+}
+
+.circle{
+  .fill-icon{
+     width:32px;
+     height:32px;
+  }
+  padding:6px;
+  border-radius: 50%;
+}
+
+//adds shadow
+.shadow{
+  box-shadow: 0px 4px 0px 0px #18191F}
+
+//input boxes
+.input-wrapper{
+  padding: 12px 20px;
+  display:flex;
+  width: 375px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid $Black;
+  border-radius: 16px;
+}
+input{
+border:none;
+    outline:none;
+   font-size:21px;
+  width: 100%;
+  margin-left: 8px ;
+}
+
+.dropdown{
+  background-color:orange;
+}
+
+#cards{
+  background:$Red-100;
+  padding:24px;
+}
+
+@mixin card($width, $height ){
+  @include border;
+  width:$width;
+  height:$height;
+  background-color:$White;
+  padding:24px;
+   display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+.blog{
+  @include card(327px,396px);
+    p{
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  }
+}
+
+@mixin profile-img($size,$bg-color){
+  width:$size;
+  height:$size;
+  @include border;
+  border-radius: 50%;
+  background:$bg-color;
+}
+
+.image{
+  @include profile-img(60px,red);
+}
+
+input {
+  background:none;
+}
+
+form{
+  padding:24px;
+  margin:24px;
+  background:$White;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  button{
+    width:100%;
+    justify-content: center;
+  }
+  h1{
+    font-size:36px;
+  }
+}
+
+.bottom-card{
+  display: flex;
+  flex-direction:row;
+  justify-content:space-between;
+  align-items: center;
+  // height:42px;
+  
+}
+
+p {
+  padding:0;
+  margin:0;
+}
+
+p.name {
+  font-size: 17px;
+  font-weight:700;
+  margin:0;
+}
+
+p.date {
+  margin:0;
+  font-size: 13px;
+  font-weight:500;
+  
+}
+
+.article{
+   @include card(327px,326px);
+  h3{
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  }
+  .small-dp{
+    @include profile-img(32px, red);
+    margin-right:12px;
+  }
+  .display-name{
+    display:flex;
+    flex-direction:start;
+    align-items:center;
+    font-weight:800;
+  }
+  .article-img{
+    margin-top:12px;
+    margin-bottom:16px;
+    Width :
+279px;
+Height :
+200px;
+    background-color:$Green;
+    @include border;
+  }
+  .likes{
+    display:flex;
+    justify-content: space-evenly;
+    align-items:center;
+  }
+  .likes *:not(:last-child){
+    padding-right:6px;
+  }
+}
+
+.yellow{
+  background-color:$yellow-100;
+}
+
+
+
+
+
+
+
+
+
+
+
